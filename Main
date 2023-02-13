@@ -1,0 +1,68 @@
+#include <iostream>
+#include <map>
+
+using namespace std;
+
+int main()
+{
+  double netIncome, bill, totalBills = 0, totalSubscriptions = 0;
+  map<string, double> bills;
+  map<string, double> subscriptions;
+
+  cout << "Enter your net income: ";
+  cin >> netIncome;
+
+  cout << "Enter the number of bills you have: ";
+  int numBills;
+  cin >> numBills;
+
+  for (int i = 0; i < numBills; i++)
+  {
+    string billName;
+    cout << "Enter the name of bill " << i + 1 << ": ";
+    cin >> billName;
+    cout << "Enter the amount of bill " << i + 1 << ": ";
+    cin >> bill;
+    bills[billName] = bill;
+    totalBills += bill;
+  }
+
+  cout << "Enter the number of subscriptions you have: ";
+  int numSubscriptions;
+  cin >> numSubscriptions;
+
+  for (int i = 0; i < numSubscriptions; i++)
+  {
+    string subscriptionName;
+    cout << "Enter the name of subscription " << i + 1 << ": ";
+    cin >> subscriptionName;
+    cout << "Enter the amount of subscription " << i + 1 << ": ";
+    cin >> bill;
+    subscriptions[subscriptionName] = bill;
+    totalSubscriptions += bill;
+  }
+
+  double totalExpenses = totalBills + totalSubscriptions;
+  double extra = netIncome - totalExpenses;
+
+  cout << endl;
+  cout << "Bills:" << endl;
+  for (auto const &x : bills)
+  {
+    cout << x.first << ": $" << x.second << endl;
+  }
+
+  cout << endl;
+  cout << "Subscriptions:" << endl;
+  for (auto const &x : subscriptions)
+  {
+    cout << x.first << ": $" << x.second << endl;
+  }
+
+  cout << endl;
+  cout << "Total expenses: $" << totalExpenses << endl;
+  cout << "Net income: $" << netIncome << endl;
+  cout << "Extra: $" << extra << endl;
+
+  return 0;
+}
